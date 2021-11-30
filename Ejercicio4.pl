@@ -19,7 +19,7 @@ sub renderHTMLpage {
 
   my $html = <<"HTML";
   <!DOCTYPE html>
-  <html lang="es">
+  <html lang="en">
     <head>
       <meta charset="UTF-8">
       <title>$title</title>
@@ -42,7 +42,7 @@ sub renderBody {
       <form action='queryByYear.pl' method=POST>
         <label for='year'>Año:</label>
         <input type='number' name='year' min='1895' max='3600' required>
-        <input type='submit' value='Ver Resultados'>
+        <input type='sumbit' value='Ver Resultados'>
       </form>
     </div>
 BODY
