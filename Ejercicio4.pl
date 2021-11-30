@@ -8,10 +8,9 @@ my $q = CGI->new;
 print $q->header('text/html;charset=UTF-8');
 
 my $titulo = "Perl y MariaDB: Consulta de Películas";
-print STDERR "$titulo\n";
-#my $body = renderBody($titulo);
+my $body = renderBody($titulo);
 
-#print renderHTMLpage('Consulta de Películas', 'css/mystyle.css', $body);
+print renderHTMLpage('Consulta de Películas', 'css/mystyle.css', $body);
 
 sub renderHTMLpage {
   my $title = $_[0];
@@ -34,3 +33,18 @@ HTML
   return $html;
 }
 
+sub renderBody {
+  my $titulo = $_[0];
+
+  my $body = <<"BODY";
+    <h1 class='titulo'>$titulo</h1>
+    <div class='centrar'>
+      <form action='queryByYear.pl' method=POST>
+        <label for='year'>Año:</label>
+        <input type='number' name='year' min='1895' max='3600' required>
+        <input type='sumbit' value='Ver Resultados'>
+      </form>
+    </div>
+BODY
+  return $body;
+}
