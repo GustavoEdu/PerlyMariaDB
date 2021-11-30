@@ -19,7 +19,6 @@ $sth->execute($year);
 
 my @resp;
 while(my @row = $sth->fetchrow_array) {
-  print STDERR "registro: @row\n";
   my $title = $row[0];
   push(@resp, $title);
 }
@@ -29,10 +28,10 @@ $dbh->disconnect;
 
 print $q->header('text/html;charset=UTF-8');
 
-#my $body = renderTable(@resp);
-#print STDERR "@resp\n";
+my $body = renderTable($year, @resp);
+print STDERR "$body\n";
 
-#print renderHTMLpage('Películas de 1985', 'css/mystyle.css', $body);
+#print renderHTMLpage("Películas de $year", 'css/mystyle.css', $body);
 
 sub renderHTMLpage {
   my $title = $_[0];
@@ -56,9 +55,11 @@ HTML
 }
 
 sub renderTable {
+  my $year = $_[0];
   my @table  = @_;
+  shift(@table);
 
-  my $body = "<h1 class='titulo'>Películas de 1985</h1>\n<table>\n";
+  my $body = "<h1 class='titulo'>Películas de $year</h1>\n<table>\n";
   foreach my $reg (@table) {
     $body .= "<tr><td>$reg</td></tr>\n";
   }
