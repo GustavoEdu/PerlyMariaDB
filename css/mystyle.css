@@ -1,0 +1,63 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.titulo {
+  text-align: center;
+  color: rgb(0, 32, 96);
+}
+.tituloAlternativo {
+  color: indigo;
+}
+.centrar {
+  max-width: 50%;
+  margin: auto;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #000;
+}
+input[type=submit] {
+  background-color: #990537;
+  color: white;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #64001D;
+}
+table {
+  border-collapse: collapse;
+  max-width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #dddddd;
+}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #990537;
+  color: white;
+}
+a:link, a:visited {
+  background-color: #990537;
+  color: white;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover, a:active {
+  background-color: #64001D;
+}
+
