@@ -42,7 +42,7 @@ sub renderBody {
       <form action='queryByYear.pl' method=POST>
         <label for='year'>Año:</label>
         <input type='number' name='year' min='1895' max='3600' required>
-        <input type='sumbit' value='Ver Resultados'>
+        <input type='submit' value='Ver Resultados'>
       </form>
     </div>
 BODY

@@ -29,9 +29,8 @@ $dbh->disconnect;
 print $q->header('text/html;charset=UTF-8');
 
 my $body = renderTable($year, @resp);
-print STDERR "$body\n";
 
-#print renderHTMLpage("Películas de $year", 'css/mystyle.css', $body);
+print renderHTMLpage("Películas de $year", 'css/mystyle.css', $body);
 
 sub renderHTMLpage {
   my $title = $_[0];
@@ -60,6 +59,7 @@ sub renderTable {
   shift(@table);
 
   my $body = "<h1 class='titulo'>Películas de $year</h1>\n<table>\n";
+  $body .= "<tr><th>Titulos</th></tr>\n";
   foreach my $reg (@table) {
     $body .= "<tr><td>$reg</td></tr>\n";
   }
