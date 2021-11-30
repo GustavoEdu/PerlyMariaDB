@@ -27,9 +27,12 @@ while(my @row = $sth->fetchrow_array) {
 $sth->finish;
 $dbh->disconnect;
 
-#print $q->header('text/html;charset=UTF-8');
+print $q->header('text/html;charset=UTF-8');
 
-#print renderHTMLpage('Actor con ID 5', 'css/mystyle.css', $resp);
+my $body = renderTable(@resp);
+print STDERR "@resp\n";
+
+print renderHTMLpage('Películas de 1985', 'css/mystyle.css', $body);
 
 sub renderHTMLpage {
   my $title = $_[0];
@@ -52,12 +55,12 @@ HTML
   return $html;
 }
 
-sub renderBody {
-  my $name  = $_[0];
+sub renderTable {
+  my @table  = @_;
 
-  my $body = <<"BODY";
-    <h1>Nombre del Actor</h1>
-    $name
-BODY
-  return $body;
+  my $body = "<h1 class='titulo'>Películas de 1985</h1>\n<table>\n";
+  foreach my $reg (@table) {
+    $body .= "<tr><td>$reg</td></tr>\n";
+  }
+  return $body."</table>\n";
 }
