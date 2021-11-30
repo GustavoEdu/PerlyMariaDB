@@ -60,6 +60,7 @@ sub renderTable {
   my @table  = @_;
 
   my $body = "<h1 class='titulo'>Películas de 1985</h1>\n<table>\n";
+  $body .= "<tr><th>Titles</th></tr>\n";
   foreach my $reg (@table) {
     $body .= "<tr><td>$reg</td></tr>\n";
   }
