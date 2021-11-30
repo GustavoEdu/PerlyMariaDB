@@ -1,7 +1,10 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use CGI;
 use DBI;
+
+my $q = CGI->new;
 
 my $user = 'alumno';
 my $password = 'pweb1';
@@ -23,4 +26,6 @@ if(my @row = $sth->fetchrow_array) {
 
 $sth->finish;
 $dbh->disconnect;
+
+print $q->header('text/html;charset=UTF-8');
 
