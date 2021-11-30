@@ -12,10 +12,11 @@ my $dsn = "DBI:MariaDB:database=pweb1;host=192.168.1.11";
 my $dbh = DBI->connect($dsn, $user, $password) or die("No se pudo conectar!");
 
 #Consultas al SGBD
-my $year = 1985;
+my $score = 7;
+my $votes = 5000;
 
-my $sth = $dbh->prepare("SELECT Title FROM Movie WHERE Year=?");
-$sth->execute($year);
+my $sth = $dbh->prepare("SELECT Title FROM Movie WHERE Score>? AND Votes>?");
+$sth->execute($score, $votes);
 
 my @resp;
 while(my @row = $sth->fetchrow_array) {
