@@ -14,7 +14,7 @@ my $dbh = DBI->connect($dsn, $user, $password) or die("No se pudo conectar!");
 #Consultas al SGBD
 my $year = $q->param('year');
 
-my $sth = $dbh->prepare("SELECT Title, Year, Score, Votes FROM Movie WHERE Year=?");
+my $sth = $dbh->prepare("SELECT Title, Year, Score, Votes FROM Movie WHERE Year=? ORDER BY Score DESC, Votes DESC");
 $sth->execute($year);
 
 my @titles;
