@@ -59,7 +59,7 @@ sub renderTable {
   shift(@table);
 
   my $body = "<h1 class='titulo'>Películas de $year</h1>\n<table>\n";
-  $body .= "<tr><th>Titulos</th></tr>\n";
+  $body .= "<tr><th>Titles</th></tr>\n";
   foreach my $reg (@table) {
     $body .= "<tr><td>$reg</td></tr>\n";
   }
