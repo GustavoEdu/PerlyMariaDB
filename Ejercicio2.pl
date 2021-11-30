@@ -12,25 +12,24 @@ my $dsn = "DBI:MariaDB:database=pweb1;host=192.168.1.11";
 my $dbh = DBI->connect($dsn, $user, $password) or die("No se pudo conectar!");
 
 #Consultas al SGBD
-my $id = 5;
+my $year = 1985;
 
-my $sth = $dbh->prepare("SELECT Name FROM Actor WHERE ActorId=?");
-$sth->execute($id);
+my $sth = $dbh->prepare("SELECT Title FROM Movie WHERE Year=?");
+$sth->execute($year);
 
-my $resp;
-if(my @row = $sth->fetchrow_array) {
-  print STDERR "@row\n";
-  $resp = $row[0];
-} else {
-  print "No hay un Actor con el ID $id!\n"; #Vacío!
+my @resp;
+while(my @row = $sth->fetchrow_array) {
+  print STDERR "registro: @row\n";
+  my $title = $row[0];
+  push(@resp, $title);
 }
 
 $sth->finish;
 $dbh->disconnect;
 
-print $q->header('text/html;charset=UTF-8');
+#print $q->header('text/html;charset=UTF-8');
 
-print renderHTMLpage('Actor con ID 5', 'css/mystyle.css', $resp);
+#print renderHTMLpage('Actor con ID 5', 'css/mystyle.css', $resp);
 
 sub renderHTMLpage {
   my $title = $_[0];
